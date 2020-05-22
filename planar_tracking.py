@@ -4,8 +4,9 @@ import cv2
 
 ESC = 27 
 camera = cv2.VideoCapture(0)
-orb = cv2.ORB_create()
-bf = cv2.BFMatcher(normType=cv2.NORM_HAMMING, crossCheck=False)
+# orb = cv2.ORB_create()
+orb = cv2.BRISK_create() # BRISK
+bf = cv2.BFMatcher(normType=cv2.NORM_HAMMING, crossCheck=True)
 MIN_MATCH_COUNT = 10
 
 """
@@ -14,7 +15,7 @@ cv2.BFMatcher(): Brute-Force Matcher
 - If crossCheck==true, then the knnMatch() method with k=1 will only return pairs (i,j) such that for i-th query descriptor the j-th descriptor in the matcher's collection is the nearest and vice versa.
 """
 
-imgTrainColor = cv2.imread('./img_source/test5.png')
+imgTrainColor = cv2.imread('./img_source/test6.png')
 imgTrainGray = cv2.cvtColor(imgTrainColor, cv2.COLOR_BGR2GRAY)
 kpTrain = orb.detect(imgTrainGray, None)
 kpTrain, desTrain = orb.compute(imgTrainGray, kpTrain) # keypoints, descriptions
@@ -41,10 +42,10 @@ while True:
     # 2つの特徴点の距離で対応関係判定
     list_matched_points = []
     for m in matches:
-        if m.distance < 70:
+        if m.distance < 100: # <-- マッチング精度の調整に必要
             list_matched_points.append(m)
 
-    print(len(matches), len(list_matched_points))
+    # print(len(matches), len(list_matched_points))
 
     # find Homography (物体の輪郭, squared)
     if len(list_matched_points) > MIN_MATCH_COUNT:

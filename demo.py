@@ -2,7 +2,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 # 画像ファイルの読み込み
-img = cv2.imread('./img_source/test5.png')
+img = cv2.imread('./img_source/test12.png')
 
 # detectors (keypoint matching)
 dict_detector = {
@@ -10,7 +10,7 @@ dict_detector = {
     "AgastFeatureDetector" : cv2.AgastFeatureDetector_create(),
     "MSER" : cv2.MSER_create(),
     "Fast" : cv2.FastFeatureDetector_create(),
-    "BRIST" : cv2.BRISK_create(),
+    "BRISK" : cv2.BRISK_create(),
     "AKAZE" : cv2.AKAZE_create(),
     "KAZE" : cv2.KAZE_create(),
     "SimpleBlobDetector" : cv2.SimpleBlobDetector_create(),
@@ -28,7 +28,7 @@ for name, detector in dict_detector.items():
     # 表示
     plt.imshow(out)
     plt.title(name)
-    plt.savefig("./img_result/result_KPM_book_{}".format(name))
+    plt.savefig("./img_result/result_KPM_test12_{}".format(name))
     plt.show()
 
     # # 特徴点, 特徴量
