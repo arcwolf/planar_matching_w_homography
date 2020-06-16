@@ -1,4 +1,0 @@
-- Why Gaussian Blur?
-Gaussian Blur successfully removed the noise from the images 
-and we have highlighted the important features of the image.
-
