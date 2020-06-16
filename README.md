@@ -2,4 +2,4 @@
 The author built planar matching demo, which is driven with key-point matching (ORB or BRISK method) and homograph method.
 
 
-![GitHub Logo](/images/logo.png)
+![Demo Video](/img_result/demo_video.gif)
